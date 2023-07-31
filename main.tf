@@ -2,25 +2,86 @@
 
 #creating a resource group >> resource block
 resource "azurerm_resource_group" "rgvnet" {
-            name = "rgvnet1"
-            location = "centralus"
+            name = "cosorg"
+            location = "eastus"
 }
 
-resource "azurerm_virtual_network" "vnet1" {
-            name = "vnet1"
-            location = "centralus"
-            address_space = ["10.0.0.0/16"]
+#vnet1
+resource "azurerm_virtual_network" "vnet1coreservices" {
+            name = "CoreServicesVnet"
+            location = "eastus"
+            address_space = ["10.20.0.0/16"]
             resource_group_name = azurerm_resource_group.rgvnet.name
 }
 
-#subnet 1 - use case - using foreach for 4 subnets
+#subnets for vnet1 - //use case - using foreach for 4 subnets
+#subnet1
+resource "azurerm_subnet" "subnet1gateway" {
+            name = "GatewaySubnet"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            virtual_network_name = azurerm_virtual_network.vnet1coreservices.name
+            address_prefixes = ["10.20.0.0/27"]
+}
+resource "azurerm_subnet" "subnet2sharedservices" {
+            name = "SharedServicesSubnet"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            virtual_network_name = azurerm_virtual_network.vnet1coreservices.name
+            address_prefixes = ["10.20.10.0/24"]
+}
+resource "azurerm_subnet" "subnet3database" {
+            name = "DatabaseSubnet"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            virtual_network_name = azurerm_virtual_network.vnet1coreservices.name
+            address_prefixes = ["10.20.20.0/24"]
+}
+resource "azurerm_subnet" "subnet4publicweb" {
+            name = "PublicWebServiceSubnet"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            virtual_network_name = azurerm_virtual_network.vnet1coreservices.name
+            address_prefixes = ["10.20.30.0/24"]
+}
+
+#vnet2
+resource "azurerm_virtual_network" "vnet2manufact" {
+            name = "ManufacturingVnet"
+            location = "westeurope"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            address_space = ["10.30.0.0/16"]
+}
+
+#subnets for vnet2
+resource "azurerm_subnet" "subnet1manufactsys" {
+            name = "ManufacturingSystemSubnet"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            virtual_network_name = azurerm_virtual_network.vnet2manufact.name
+            address_prefixes = ["10.30.10.0/24"]
+}
+#subnet 2 to 4 - trying for each loop
+resource "azurerm_subnet" "subnet2to4" {
+            for_each = var.subnets
+
+            name = each.value.name
+            address_prefixes = [each.value.address_prefix]
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            virtual_network_name = azurerm_virtual_network.vnet2manufact.name
+}
+
+#vnet3
+resource "azurerm_virtual_network" "vnet3research" {
+            name = "ResearchVnet"
+            location = "southeastasia"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            address_space = ["10.40.0.0/16"]
+}
+#subnet for vnet 3
 resource "azurerm_subnet" "subnet1" {
-            name = "subnetapp"
+            name = "ResearchSystemSubnet"
+            address_prefixes = ["10.40.0.0/24"]
             resource_group_name = azurerm_resource_group.rgvnet.name
-            virtual_network_name = azurerm_virtual_network.vnet1.name
-            address_prefixes = ["10.0.0.0/28"]
+            virtual_network_name = azurerm_virtual_network.vnet3research.name
 }
 
+/*
 resource "azurerm_network_interface" "nicapp" {
             name = "nic1"
             location = "centralus"
@@ -30,4 +91,4 @@ resource "azurerm_network_interface" "nicapp" {
                 subnet_id = azurerm_subnet.subnet1.id #usecase for multiple subnets
                 private_ip_address_allocation = "Dynamic"
             }
-}
+}*/
