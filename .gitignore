@@ -1,0 +1,5 @@
+# since we are using pvt dns zones and got an error due to tf version etc better to keep .terraform.lock.hcl
+# this will help with the zonr and vnet dependencies
+
+#ignore .terraform folder
+.terraform/*
