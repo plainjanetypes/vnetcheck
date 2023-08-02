@@ -132,5 +132,5 @@ resource "azurerm_subnet" "subnet3bastion" {
             name = "AzureBastionSubnet"
             resource_group_name = azurerm_resource_group.lbrg.name
             virtual_network_name = azurerm_virtual_network.lbvnet.name
-            address_prefixes = ["10.1.1.0/24"]
+            address_prefixes = ["10.1.1.0/24"] #should be min /26 and have the exact name
 }
