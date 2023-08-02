@@ -57,3 +57,30 @@ resource "azurerm_virtual_network_gateway" "vnetmanufactgateway" {
                 subnet_id = azurerm_subnet.subnet5gateway.id
         }
 }
+
+#creating a bidirectional connection between the two gateways created as both are from different regions (us and europe)
+#core to manufact connection - between vnet gateways - us to europe
+resource "azurerm_virtual_network_gateway_connection" "coretomanu_eastustoeurope" {
+        name = "CoreServicesGW-to-ManufacturingGW"
+        resource_group_name = azurerm_resource_group.rgvnet.name
+        location = azurerm_virtual_network.vnet1coreservices.location # points to eastus
+
+        type = "Vnet2Vnet"
+        virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetcoregateway.id
+        peer_virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetmanufactgateway.id
+
+        shared_key = "abc123"
+}
+
+#manufact to core connection - between vnet gateways - europe to us
+resource "azurerm_virtual_network_gateway_connection" "manutocore_europetoeastus" {
+        name = "ManufacturingGW-to-CoreServicesGW"
+        resource_group_name = azurerm_resource_group.rgvnet.name
+        location = azurerm_virtual_network.vnet2manufact.location #points to europe
+
+        type = "Vnet2Vnet"
+        virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetmanufactgateway.id
+        peer_virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetcoregateway.id
+
+        shared_key = "abc123"  
+}
