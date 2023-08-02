@@ -15,7 +15,6 @@ resource "azurerm_virtual_network" "vnet1coreservices" {
 }
 
 #subnets for vnet1 - //use case - using foreach for 4 subnets
-#subnet1
 resource "azurerm_subnet" "subnet1gateway" {
             name = "GatewaySubnet"
             resource_group_name = azurerm_resource_group.rgvnet.name
@@ -56,6 +55,14 @@ resource "azurerm_subnet" "subnet1manufactsys" {
             virtual_network_name = azurerm_virtual_network.vnet2manufact.name
             address_prefixes = ["10.30.10.0/24"]
 }
+#newsubnet for gateway for vnet2
+resource "azurerm_subnet" "subnet5gateway" {
+            name = "GatewaySubnet"
+            resource_group_name = azurerm_resource_group.rgvnet.name
+            virtual_network_name = azurerm_virtual_network.vnet2manufact.name
+            address_prefixes = ["10.30.0.0/27"]
+}
+
 #subnet 2 to 4 - trying for each loop
 resource "azurerm_subnet" "subnet2to4" {
             for_each = var.subnets
@@ -74,7 +81,7 @@ resource "azurerm_virtual_network" "vnet3research" {
             address_space = ["10.40.0.0/16"]
 }
 #subnet for vnet 3
-resource "azurerm_subnet" "subnet1" {
+resource "azurerm_subnet" "subnet1research" {
             name = "ResearchSystemSubnet"
             address_prefixes = ["10.40.0.0/24"]
             resource_group_name = azurerm_resource_group.rgvnet.name
