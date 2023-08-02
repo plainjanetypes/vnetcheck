@@ -12,7 +12,7 @@ resource "azurerm_virtual_network_peering" "peering1" {
         #not testing with gateways, use_remote_gateways = default false, not added
         }
 
-#peering lnk 2 from manufact to core
+#peering link 2 from manufact to core
 resource "azurerm_virtual_network_peering" "peering2" {
         name = "ManufacturingVnet-to-CoreServicesVnet"
         resource_group_name = azurerm_resource_group.rgvnet.name

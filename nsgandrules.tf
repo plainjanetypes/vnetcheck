@@ -18,6 +18,7 @@ resource "azurerm_network_security_group" "genericnsg" {
                 #resource_group_name         = azurerm_resource_group.rgvnet.name
                 #network_security_group      = azurerm_network_security_group.genericnsg.id
             }
+            #more rules later
             /*
             security_rule {
                 name                        = "allowicmp"
