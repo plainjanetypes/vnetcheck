@@ -6,7 +6,7 @@ resource "azurerm_private_dns_zone" "cosorg" {
 }
 
 #linking the pvt dns zone with corevnet //use case try with variables 
-resource "azurerm_private_dns_zone_virtual_network_link" "CoreVnetLink" {
+resource "azurerm_private_dns_zone_virtual_network_link" "corevnetlink" {
             name ="CoreServicesVnetLink"
             resource_group_name = azurerm_resource_group.rgvnet.name
             private_dns_zone_name = azurerm_private_dns_zone.cosorg.name
@@ -15,7 +15,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "CoreVnetLink" {
 }
 
 #linking the pvt dns zone with manufact vnet
-resource "azurerm_private_dns_zone_virtual_network_link" "ManufactVnetLink" {
+resource "azurerm_private_dns_zone_virtual_network_link" "manufactvnetlink" {
             name = "ManufacturingVnetLink"
             resource_group_name = azurerm_resource_group.rgvnet.name
             private_dns_zone_name = azurerm_private_dns_zone.cosorg.name
@@ -24,7 +24,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "ManufactVnetLink" {
 }
 
 #linking the pvt dns zone with research vnet
-resource "azurerm_private_dns_zone_virtual_network_link" "ResVnetLink" {
+resource "azurerm_private_dns_zone_virtual_network_link" "resvnetlink" {
             name = "ResearchVnetLink"
             resource_group_name = azurerm_resource_group.rgvnet.name
             private_dns_zone_name = azurerm_private_dns_zone.cosorg.name

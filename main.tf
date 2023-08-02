@@ -5,6 +5,11 @@ resource "azurerm_resource_group" "rgvnet" {
             name = "cosorg"
             location = "eastus"
 }
+#creating RG for lb vnet
+resource "azurerm_resource_group" "lbrg" {
+            name = "IntLB-RG"
+            location = "eastus"  
+}
 
 #vnet1
 resource "azurerm_virtual_network" "vnet1coreservices" {
@@ -99,3 +104,30 @@ resource "azurerm_network_interface" "nicapp" {
                 private_ip_address_allocation = "Dynamic"
             }
 }*/
+
+#vnet for load balancer
+resource "azurerm_virtual_network" "lbvnet" {
+            name = "IntLB-VNet"
+            location = "eastus"
+            resource_group_name = azurerm_resource_group.lbrg.name
+            address_space = ["10.1.0.0/16"]
+}
+#adding 2 subnets for the lb vnet
+
+#backend
+resource "azurerm_subnet" "subnet1backend" {
+            name = "myBackendSubnet"
+            resource_group_name = azurerm_resource_group.lbrg.name
+            virtual_network_name = azurerm_virtual_network.lbvnet.name
+            address_prefixes = ["10.1.0.0/24"]
+}
+
+#frontend
+resource "azurerm_subnet" "subnet2frontend" {
+            name = "myFrontEndSubnet"
+            resource_group_name = azurerm_resource_group.lbrg.name
+            virtual_network_name = azurerm_virtual_network.lbvnet.name
+            address_prefixes = ["10.1.2.0/24"]
+  
+}
+
