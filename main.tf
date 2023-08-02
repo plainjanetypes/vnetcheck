@@ -113,7 +113,6 @@ resource "azurerm_virtual_network" "lbvnet" {
             address_space = ["10.1.0.0/16"]
 }
 #adding 2 subnets for the lb vnet
-
 #backend
 resource "azurerm_subnet" "subnet1backend" {
             name = "myBackendSubnet"
@@ -121,13 +120,17 @@ resource "azurerm_subnet" "subnet1backend" {
             virtual_network_name = azurerm_virtual_network.lbvnet.name
             address_prefixes = ["10.1.0.0/24"]
 }
-
 #frontend
 resource "azurerm_subnet" "subnet2frontend" {
             name = "myFrontEndSubnet"
             resource_group_name = azurerm_resource_group.lbrg.name
             virtual_network_name = azurerm_virtual_network.lbvnet.name
             address_prefixes = ["10.1.2.0/24"]
-  
 }
-
+#bastionsubnet for connecting to the vms
+resource "azurerm_subnet" "subnet3bastion" {
+            name = "AzureBastionSubnet"
+            resource_group_name = azurerm_resource_group.lbrg.name
+            virtual_network_name = azurerm_virtual_network.lbvnet.name
+            address_prefixes = ["10.1.1.0/24"]
+}
