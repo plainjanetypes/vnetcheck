@@ -26,3 +26,4 @@ variable "admin_password" {
       description = "admin password for vmadmin"
       sensitive = true
 }
+

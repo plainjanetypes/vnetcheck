@@ -1,11 +1,24 @@
 terraform {
   #version = ">0.14"
-  /*required_providers {
-    
-  }*/
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+    }
+    external = {
+      source = "hashicorp/external"
+    }
+  }
 }
 
 provider "azurerm" {
   version = ">=2.0.0"
   features {}
 }
+#adding provider for external powershell source from https://registry.terraform.io/providers/hashicorp/external/latest
+
+provider "external" {
+    #no version limit
+}
+/*
+#adding for data reference
+data "azurerm_client_config" "current" {} */
