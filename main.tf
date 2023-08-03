@@ -93,18 +93,6 @@ resource "azurerm_subnet" "subnet1research" {
             virtual_network_name = azurerm_virtual_network.vnet3research.name
 }
 
-/*
-resource "azurerm_network_interface" "nicapp" {
-            name = "nic1"
-            location = "centralus"
-            resource_group_name = azurerm_resource_group.rgvnet.name
-            ip_configuration {
-                name = "internalapp-ip"
-                subnet_id = azurerm_subnet.subnet1.id #usecase for multiple subnets
-                private_ip_address_allocation = "Dynamic"
-            }
-}*/
-
 #vnet for load balancer
 resource "azurerm_virtual_network" "lbvnet" {
             name = "IntLB-VNet"

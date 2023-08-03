@@ -18,3 +18,6 @@ variable "subnets" {
       }
     }
 }
+variable "virtual_machineslb" {
+      default = ["myVM1","myVM2"]  
+}
