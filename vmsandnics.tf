@@ -33,7 +33,7 @@ resource "azurerm_windows_virtual_machine" "vms12"{
     network_interface_ids = [azurerm_network_interface.nic12forlbvms[count.index].id] #nicreference as per count
     admin_username = "vmadmin"
     #hide the password using sensitive variable
-    admin_password = sensitive(var.admin_password) #this can be added in .tfvars or when applying the changes as -var=
+    admin_password = sensitive(var.admin_password) #this can be added in .tfvars or when applying the changes as -var= or via keyvault
     size = "Standard_D2S_v3"
 
     source_image_reference {
