@@ -4,13 +4,9 @@
 #manufacturing vnet - vm1
 /*
 #creating 2 vms for load balancer testing
-#need to define variables first
-resource "azurerm_virtual_machine" "lbvm1" {
-        
-  
-}*/
+#need to define variables first */
 
-#nic creation for vms via loop
+#nic creation for 2 vms via loop
 resource "azurerm_network_interface" "nic12forlbvms" {
             count = length(var.virtual_machineslb)
             name = "nic-${var.virtual_machineslb[count.index]}" #for name nic-myvm1
@@ -21,6 +17,13 @@ resource "azurerm_network_interface" "nic12forlbvms" {
                 subnet_id = azurerm_subnet.subnet1backend.id #for adding to backend pool
                 private_ip_address_allocation = "Dynamic"
             }
+}
+#specify which backend pool the nics should belong to
+resource "azurerm_network_interface_backend_address_pool_association" "backendpoolandnics" {
+            count = length(var.virtual_machineslb)
+            network_interface_id = element(azurerm_network_interface.nic12forlbvms.*.id, count.index)
+            backend_address_pool_id = azurerm_lb_backend_address_pool.backendpool.id
+            ip_configuration_name = "pvtip-${var.virtual_machineslb[count.index]}"
 }
 
 #vm creation

@@ -1,4 +1,5 @@
-#creating a keyvault to store and reference vms passwords - but no tenant/object values can be referenced without apply - insane
+#creating a keyvault to store and reference vms passwords - but no tenant/object values can be referenced without apply - insane but it means, move it to a diff state
+#keyvault should be primary pre req and be singularly deployed
 /* resource "azurerm_key_vault" "azurekv" {
         name = "711KV"
         location = azurerm_resource_group.rgvnet.location

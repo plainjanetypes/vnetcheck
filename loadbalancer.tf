@@ -17,9 +17,25 @@ resource "azurerm_lb" "lbint" {
         frontend_ip_configuration {
           name = "PublicIPLB"
           public_ip_address_id = azurerm_public_ip.lbip.id
+          subnet_id = azurerm_subnet.subnet2frontend.id
+            }
         }
+resource "azurerm_lb_backend_address_pool" "backendpool" {
+        name = "myBackendPool"
+        loadbalancer_id = azurerm_lb.lbint.id
+        virtual_network_id = azurerm_virtual_network.lbvnet.id
+} #to add vms to the backend pool, add the backendpoolids to the nic
 
-
-
+#create a health probe
+resource "azurerm_lb_probe" "lbprobe" {
+        name = "myHealthProbe"
+        loadbalancer_id = azurerm_lb.lbint.id
+        protocol = "Http"
+        port = 80
+        interval_in_seconds = 15
+        #unhealthy_threshold = 2
+        request_path = "/"
+        
+  
 }
   
