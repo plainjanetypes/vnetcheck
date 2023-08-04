@@ -45,4 +45,6 @@ resource "azurerm_lb_rule" "lbrule" {
         frontend_port = "80"
         backend_port = "80"
         frontend_ip_configuration_name = azurerm_public_ip.lbip.name
-}
+        #backend_address_pool_ids = 
+        #probe_id = 
+        }

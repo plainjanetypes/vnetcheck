@@ -19,7 +19,7 @@ variable "subnets" {
     }
 }
 variable "virtual_machineslb" {
-      default = ["myVM1","myVM2"]  
+      default = ["myVM1","myVM2", "myVM3"]  
 }
 variable "admin_password" {
       type = string
