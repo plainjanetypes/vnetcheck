@@ -12,7 +12,7 @@ locals {
       #
       /*
       #this is giving an error if separate - ....ails.result is map of string with 2 elements
-      tenant_id = jsondecode(data.external.azuredetails.result).tenant_id
+      tenant_id = jsondecode(data.external.azuredetails.result).tenant_id #jsondecode not needed
       object_id = jsondecode(data.external.azuredetails.result).object_id
       */
 }
