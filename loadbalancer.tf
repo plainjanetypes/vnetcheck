@@ -34,8 +34,15 @@ resource "azurerm_lb_probe" "lbprobe" {
         port = 80
         interval_in_seconds = 15
         #unhealthy_threshold = 2
-        request_path = "/"
-        
-  
+        request_path = "/" 
 }
-  
+
+#create a load balancer rule
+resource "azurerm_lb_rule" "lbrule" {
+        name = "myHTTPRule"
+        loadbalancer_id = azurerm_lb.lbint.id
+        protocol = "Tcp"
+        frontend_port = "80"
+        backend_port = "80"
+        frontend_ip_configuration_name = azurerm_public_ip.lbip.name
+}
