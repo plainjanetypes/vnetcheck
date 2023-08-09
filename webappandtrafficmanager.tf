@@ -77,6 +77,7 @@ resource "azurerm_traffic_manager_azure_endpoint" "primaryendpoint" {
     weight = 100
     priority = 1
     target_resource_id = azurerm_windows_web_app.coswebapp1.id
+    #status = "Disabled" for testing
   
 }
 #failoverendpoint
