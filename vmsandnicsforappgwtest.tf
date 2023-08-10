@@ -1,16 +1,16 @@
 
 #create nics via loop - local variable used
 resource "azurerm_network_interface" "appgwvmnics34" {
-    #count = length(local.appgwvms_output) #not to use 
-    #name = "nic-${local.appgwvms_output[count.index]}"
+    count = length(local.appgwvms_output) #not to use 
+    name = "nic-${local.appgwvms_output[count.index]}"
 
-    for_each = local.appgwvms_output
-    name = "nic-${each.key}"
+    # for_each = local.appgwvms_output
+    # name = "nic-${each.key}"
     location = azurerm_resource_group.cosappgwrg.location
     resource_group_name = azurerm_resource_group.cosappgwrg.name
     ip_configuration {
-      #name = "pvtip-${local.appgwvms_output[count.index]}"
-      name = "pvtip-${each.key}"
+      name = "pvtip-${local.appgwvms_output[count.index]}"
+      #name = "pvtip-${each.key}"
       subnet_id = azurerm_subnet.appgwbackendsubnet.id
       private_ip_address_allocation = "Dynamic"
     }
