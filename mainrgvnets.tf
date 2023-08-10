@@ -21,6 +21,10 @@ resource "azurerm_virtual_network" "vnet1coreservices" {
             location = "eastus"
             address_space = ["10.20.0.0/16"]
             resource_group_name = azurerm_resource_group.rgvnet.name
+            ddos_protection_plan {
+              id = azurerm_network_ddos_protection_plan.coreddosplan.id
+              enable = true
+            }
 }
 
 #subnets for vnet1 - //use case - using foreach for 4 subnets
