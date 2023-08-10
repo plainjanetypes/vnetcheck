@@ -22,8 +22,9 @@ locals {
       */
       #local variable for reading vm names and assigned to variable defined in variables tf -commented as powershell is not giving desired o/p
       #appgwvms_output = (data.external.appgwvmslist.result)  #not added in variables.tf (1 variable defined, unused)
-      appgwvms_output = [ split(",", file("${path.module}/readappgwvms.txt"))]
-      appgwvms_network_interface_ids = [ for i in range(length(local.appgwvms_output)) : azurerm_network_interface.appgwvmnics34[i].id]
+      #appgwvms_output = [ split("\n", file("${path.module}/readappgwvms.txt"))]
+      appgwvms_output = toset(split("\n", file("${path.module}/readappgwvms.txt")))
+      #appgwvms_network_interface_ids = [ for i in range(length(local.appgwvms_output)) : azurerm_network_interface.appgwvmnics34[i].id]
       #appgwvms_network_interface_ids = [ for nic in azurerm_azurerm_network_interface.appgwvmnics34 : nic.id ]
       #local variable for app gateway
       backend_address_pool_name = "${azurerm_virtual_network.cosappgwvnet.name}-backendpool"
