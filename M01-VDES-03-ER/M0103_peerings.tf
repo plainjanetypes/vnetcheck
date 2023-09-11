@@ -1,3 +1,5 @@
+#M01 - Unit 8 Connect two Azure Virtual Networks using global virtual network peering
+
 #creating  a bidirectional vnet peering between core and manufact vnets
 #peering link 1 from core to manufact
 resource "azurerm_virtual_network_peering" "peering1" {

@@ -1,9 +1,15 @@
+#M02-Unit 7 Create a Virtual WAN by using Azure Portal
+
 #creating a WAN 
 resource "azurerm_virtual_wan" "vwan" {
         name = "CosOrgVirtualWAN"
         resource_group_name = azurerm_resource_group.rgvnet.name
         location = "eastus" #WAN is a global resource though, doesnt need a specific region
         type = "Standard"
+        tags = {
+                module = "M02"
+                totest = "vwan"
+        }
 }
 
 #creating a virtual hub
@@ -13,6 +19,10 @@ resource "azurerm_virtual_hub" "vhub" {
         resource_group_name = azurerm_resource_group.rgvnet.name
         virtual_wan_id = azurerm_virtual_wan.vwan.id
         address_prefix = "10.0.0.0/23"
+        tags = {
+                module = "M02"
+                totest = "vwan"
+        }
 }
 
 #attach this vhub to researchvnet to allow vhub (westus) to talk to vnet (seasia)

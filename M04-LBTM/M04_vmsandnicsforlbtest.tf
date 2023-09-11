@@ -1,10 +1,8 @@
 #coreservices vnet - vm1
-
-
 #manufacturing vnet - vm1
 /*
 #creating 3 vms for load balancer testing
-#need to define variables first */
+#need to define variables first - myvm1,2,3 in variables.tf */
 
 #nic creation for 3 vms via loop
 resource "azurerm_network_interface" "nic1-3forlbvms" {
@@ -37,6 +35,8 @@ resource "azurerm_windows_virtual_machine" "vms12"{
     admin_username = "vmadmin"
     #hide the password using sensitive variable
     admin_password = sensitive(var.admin_password) #this can be added in .tfvars or when applying the changes as -var= or via keyvault
+    #using an existing keyvault
+    
     size = "Standard_D2S_v3"
 
     source_image_reference {

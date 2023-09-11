@@ -1,11 +1,17 @@
-#creating a private dns zone
 
+#M01 - Unit 6 Configure DNS settings in Azure
+
+#creating a private dns zone
 resource "azurerm_private_dns_zone" "cosorg" {
             name = "cosorg.com"
             resource_group_name = azurerm_resource_group.rgvnet.name  
+            tags = {
+            module = "M01"
+            totest = "dns-settings"
+            }
 }
 
-#linking the pvt dns zone with corevnet //use case try with variables 
+#linking the pvt dns zone with corevnet  
 resource "azurerm_private_dns_zone_virtual_network_link" "corevnetlink" {
             name ="CoreServicesVnetLink"
             resource_group_name = azurerm_resource_group.rgvnet.name
@@ -23,6 +29,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "manufactvnetlink" {
             registration_enabled = true
 }
 
+
 #linking the pvt dns zone with research vnet
 resource "azurerm_private_dns_zone_virtual_network_link" "resvnetlink" {
             name = "ResearchVnetLink"
@@ -32,4 +39,4 @@ resource "azurerm_private_dns_zone_virtual_network_link" "resvnetlink" {
             registration_enabled = true  
 }
 
-#create 2 vms next, add/check A records for each in the dns zone (vms should auto register their ips in the dns zone if enabled) and 
+#create 2 vms next, add/check A records for each in the dns zone (vms should auto register their ips in the dns zone if enabled)  

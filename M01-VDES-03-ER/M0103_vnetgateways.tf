@@ -1,3 +1,5 @@
+#M02 - Unit 3 Create and configure a virtual network gateway
+
 #creating a public ip for the core service gateway 
 resource "azurerm_public_ip" "coregatewayip" {
         name = "CoreServicesVnetGateway-ip"
@@ -59,6 +61,7 @@ resource "azurerm_virtual_network_gateway" "vnetmanufactgateway" {
 }
 
 #creating a bidirectional connection between the two gateways created as both are from different regions (us and europe)
+
 #core to manufact connection - between vnet gateways - us to europe
 resource "azurerm_virtual_network_gateway_connection" "coretomanu_eastustoeurope" {
         name = "CoreServicesGW-to-ManufacturingGW"
@@ -69,7 +72,7 @@ resource "azurerm_virtual_network_gateway_connection" "coretomanu_eastustoeurope
         virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetcoregateway.id
         peer_virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetmanufactgateway.id
 
-        shared_key = "abc123"
+        shared_key = "abc123" #bad - keyvault needed
 }
 
 #manufact to core connection - between vnet gateways - europe to us
@@ -82,5 +85,5 @@ resource "azurerm_virtual_network_gateway_connection" "manutocore_europetoeastus
         virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetmanufactgateway.id
         peer_virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetcoregateway.id
 
-        shared_key = "abc123"  
+        shared_key = "abc123"  #bad - keyvault needed
 }

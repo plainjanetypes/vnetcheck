@@ -26,7 +26,7 @@ resource "azurerm_service_plan" "appplaneastus" {
 #create a web app instance 1 - central us
 resource "azurerm_windows_web_app" "frontwebappcentralus" {
     name = "CosWebApp1CUS"
-    location = azurerm_resource_group.frontdoortestrg.location
+    location = "centralus"
     resource_group_name = azurerm_resource_group.frontdoortestrg.name
     service_plan_id = azurerm_service_plan.appplancentralus.id
     site_config {
@@ -36,8 +36,8 @@ resource "azurerm_windows_web_app" "frontwebappcentralus" {
 #create a web app instance 2 - east us
 resource "azurerm_windows_web_app" "frontwebappeastus" {
     name = "CosWebApp2EUS"
-    location = azurerm_resource_group.webapprg2.location
-    resource_group_name = azurerm_resource_group.webapprg2.name
+    location = azurerm_resource_group.frontdoortestrg.location
+    resource_group_name = azurerm_resource_group.frontdoortestrg.name
     service_plan_id = azurerm_service_plan.appplaneastus.id
     site_config {
       #dotnet_framework_version = "v4.8" # was valid for azurerm_app_service , v3.0

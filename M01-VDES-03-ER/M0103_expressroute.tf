@@ -1,9 +1,16 @@
+#M03 - Unit 4 Configure an ExpressRoute Gateway
+#M03 - Unit 5 Provision an ExpressRoute circuit
+
 #create public ip
 resource "azurerm_public_ip" "ergatewaypublicip" {
     name = "CoreServicesERGateway-IP"
     location = azurerm_virtual_network.vnet1coreservices.location
     resource_group_name = azurerm_resource_group.rgvnet.name
     allocation_method = "Dynamic"
+    tags = {
+        module = "M03"
+        totest = "ER"
+    }
 }
 #vnet gateway for expressroute - uses corevnet, not using azurerm_express_route_gateway
 resource "azurerm_virtual_network_gateway" "ergateway" {
@@ -18,6 +25,10 @@ resource "azurerm_virtual_network_gateway" "ergateway" {
             private_ip_address_allocation = "Dynamic"
             subnet_id = azurerm_subnet.subnet1gateway.id 
         }
+        tags = {
+        module = "M03"
+        totest = "ER"
+        }
 }
 #create an expressroute circuit - once provisioned share the service key with provider else will not work
 resource "azurerm_express_route_circuit" "ercircuit" {
@@ -30,6 +41,10 @@ resource "azurerm_express_route_circuit" "ercircuit" {
         sku {
           tier = "Standard"
           family = "MeteredData"
+        }
+        tags = {
+        module = "M03"
+        totest = "ER"
         }
 }
 /* #create an expressroute circuit connection IF peering
