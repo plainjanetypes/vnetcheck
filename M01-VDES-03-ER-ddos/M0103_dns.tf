@@ -39,4 +39,4 @@ resource "azurerm_private_dns_zone_virtual_network_link" "resvnetlink" {
             registration_enabled = true  
 }
 
-#create 2 vms next, add/check A records for each in the dns zone (vms should auto register their ips in the dns zone if enabled)  
+#create 2 vms next, add/check A records for each in the dns zone (vms should auto register their ips in the dns zone if enabled) -dnsvms.tf  
