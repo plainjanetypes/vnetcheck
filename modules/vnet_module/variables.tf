@@ -1,3 +1,26 @@
+#adding variables to test a vnet module
+variable "vnet_name" {
+      description = "name of the vnet"
+      type = string
+}
+variable "address_space" {
+      description = "address space for the vnet"
+      type = list(string)
+}
+variable "subnets" {
+      description = "subnet names and address space"
+      type = list(object({
+            name = string
+            address_prefix = string
+      }))
+}
+variable "location" {
+      type = string
+}
+
+
+
+
 
 
 
@@ -13,5 +36,4 @@ variable "keyvault711accesspolicy" {
             secret_permissions = list(string)
             storage_permissions = list(string)
       }))
-  
 }*/

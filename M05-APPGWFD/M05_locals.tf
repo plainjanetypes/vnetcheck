@@ -14,5 +14,4 @@ locals {
       listener_name = "${azurerm_virtual_network.cosappgwvnet.name}-listener"
       request_routing_rule_name = "${azurerm_virtual_network.cosappgwvnet.name}-reqrout"
       redirect_configuration_name = "${azurerm_virtual_network.cosappgwvnet.name}-redirectconfig"
-
-}
+      }
