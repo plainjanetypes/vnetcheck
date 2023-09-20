@@ -1,0 +1,15 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+pool: mylapu
+
+steps:
+- script: |
+   echo 'init and plan'
+   terraform init
+   terraform plan
+  displayName: 'terraform init and plan'
+  workingDirectory: 'C:\agent\_work\1\s'
