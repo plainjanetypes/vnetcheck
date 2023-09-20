@@ -6,10 +6,11 @@
 trigger: none
 pool: mylapu
 
+#/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
 
 steps:
 - script: |
-   cd $(System.DefaultWorkingDirectory)/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
+   cd $(System.DefaultWorkingDirectory) 
    terraform init
    terraform plan
   displayName: 'terraform plan'
