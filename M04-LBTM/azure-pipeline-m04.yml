@@ -1,19 +1,21 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# for M04-LBTM
 
 trigger:
-- main
+ branches:
+   include:
+     - main
 
-pool:
-  vmImage: ubuntu-latest
+pool: mylapu
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: |
+    echo 'terraform init'
+    terraform init
+  displayName: 'terraform init'
+  workingDirectory: 'C:\agent\_work\1\s'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    echo 'publish terraform plan'
+    terraform plan
+  displayName: 'terraform plan'
+  workingDirectory: 'C:\agent\_work\1\s'
