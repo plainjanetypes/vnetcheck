@@ -6,7 +6,6 @@
 trigger: none
 pool: mylapu
 
-cd $(System.DefaultWorkingDirectory)/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
 
 steps:
 - script: |
