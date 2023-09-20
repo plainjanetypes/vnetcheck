@@ -6,20 +6,20 @@
 trigger: none
 pool: mylapu
 
-resources:
- repositories:
-    - repository: vnetcheck
-      type: azureRepo
-      name: networkingaz700/networksetup
-      ref: refs/heads/M01-VDES-03-ER-ddos
+# resources:
+#  repositories:
+#     - repository: vnetcheck
+#       type: azureRepo
+#       name: networkingaz700/networksetup
+#       ref: refs/heads/M01-VDES-03-ER-ddos
       
 
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
 #cd $(Build.SourcesDirectory)/networksetup/M01-VDES-03-ER-ddos and cd $(Build.SourcesDirectory) didnt work
 
 steps:
+- checkout: self
 - script: |
-   
    terraform init
    terraform plan
   displayName: 'terraform plan'
