@@ -9,6 +9,16 @@ terraform {
       source = "hashicorp/external"
     }
   }
+  #store state in terra general for M01-M03
+    backend "azurerm" {
+    resource_group_name = "generalrg"
+    storage_account_name = "terrageneral"
+    container_name = "tfbackup"
+    key = "M01-VDES-03-ER-ddos.tfstate"
+    #service_connection_id = ""
+    #org_service_url =
+    #project_name =
+    }
 }
 
 provider "azurerm" {
