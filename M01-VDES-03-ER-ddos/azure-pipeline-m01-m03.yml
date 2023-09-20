@@ -1,9 +1,10 @@
 #for M01-VDES-03-ER-ddos
 
-trigger:
-  branches:
-    include:
-      - main
+# trigger:
+#   branches:
+#     include:
+#       - main
+trigger: none
 
 pool: mylapu
 
