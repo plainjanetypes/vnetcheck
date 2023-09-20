@@ -15,9 +15,9 @@ steps:
 - script: |
    terraform init
   displayName: 'terraform init'
-  workingDirectory: 'C:\agent\_work\1\s'
+  #workingDirectory: 'C:\agent\_work\1\s'
 
 - script: |
    terraform plan
   displayName: 'terraform plan'
-  workingDirectory: 'C:\agent\_work\1\s'
+  #workingDirectory: 'C:\agent\_work\1\s'
