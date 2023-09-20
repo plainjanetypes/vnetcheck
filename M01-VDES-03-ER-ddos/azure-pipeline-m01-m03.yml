@@ -1,0 +1,22 @@
+#for M01-VDES-03-ER-ddos
+
+trigger:
+  branches:
+    include:
+      - main
+
+pool: mylapu
+
+steps:
+- script: |
+    echo 'terraform init'
+    terraform init
+  displayName: 'terraform init'
+  workingDirectory: 'C:\agent\_work\1\s'
+
+- script: |
+    echo 'publish terraform plan'
+    terraform plan
+  displayName: 'terraform plan'
+  workingDirectory: 'C:\agent\_work\1\s'
+
