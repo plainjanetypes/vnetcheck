@@ -10,7 +10,7 @@ pool: mylapu
 
 steps:
 - script: |
-   cd $(System.DefaultWorkingDirectory)/networksetup/M01-VDES-03-ER-ddos
+   cd $(Build.SourcesDirectory)/networksetup/M01-VDES-03-ER-ddos
    terraform init
    terraform plan
   displayName: 'terraform plan'
