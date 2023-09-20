@@ -8,8 +8,11 @@ pool: mylapu
 
 steps:
 - script: |
+   az login --service-principal -u 3ba70a91-655a-47f0-9d7c-8e43cc22de6e -p gtM8Q~_RQtWmEsVUmC2YdOkwGjXRSzJjn_x0cczF --tenant d05a216e-6e0c-4e0f-9e71-5507bb668139
+   az account set --subscription a87b2fd2-98c1-4751-9689-5bc24a57d50a
    echo 'init and plan'
    terraform init
    terraform plan
   displayName: 'terraform init and plan'
   workingDirectory: 'C:\agent\_work\1\s'
+
