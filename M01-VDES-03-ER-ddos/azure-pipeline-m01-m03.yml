@@ -12,7 +12,7 @@ pool: mylapu
 steps:
 - script: |
     echo 'terraform init'
-    terraform init
+    terraform init -backend-config="backend.tf"
   displayName: 'terraform init'
   workingDirectory: 'C:\agent\_work\1\s'
 
