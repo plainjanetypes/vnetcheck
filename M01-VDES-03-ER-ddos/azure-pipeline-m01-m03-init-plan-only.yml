@@ -6,12 +6,19 @@
 trigger: none
 pool: mylapu
 
+resources:
+ repositories:
+    - repository: vnetcheck
+      type: github
+      name: plainjanetypes/vnetcheck
+      ref: azure-pipelines-01-03-init-plan-only/M01-VDES-03-ER-ddos
+
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
-#cd $(Build.SourcesDirectory)/networksetup/M01-VDES-03-ER-ddos
+#cd $(Build.SourcesDirectory)/networksetup/M01-VDES-03-ER-ddos and cd $(Build.SourcesDirectory) didnt work
 
 steps:
 - script: |
-   cd $(Build.SourcesDirectory)
+   
    terraform init
    terraform plan
   displayName: 'terraform plan'
