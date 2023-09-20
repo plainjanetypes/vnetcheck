@@ -12,4 +12,4 @@ steps:
    terraform init
    terraform plan
   displayName: 'terraform init and plan'
-  workingDirectory: 'C:\agent\_work\1\s'
+  #workingDirectory: 'C:\agent\_work\1\s'
