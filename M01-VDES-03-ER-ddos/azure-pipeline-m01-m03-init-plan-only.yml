@@ -10,7 +10,7 @@ resources:
  repositories:
     - repository: vnetcheck
       type: github
-      endpoint: plainjanetypes
+      endpoint: pj-hub
       name: plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
       ref: refs/heads/main
 
