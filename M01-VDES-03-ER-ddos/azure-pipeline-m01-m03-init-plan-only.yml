@@ -10,7 +10,7 @@ resources:
  repositories:
     - repository: vnetcheck
       type: git
-      name: networkingaz700/networksetup/vnetcheck/M01-VDES-03-ER-ddos
+      name: networksetup/vnetcheck/M01-VDES-03-ER-ddos
       ref: refs/heads/main
 
       
