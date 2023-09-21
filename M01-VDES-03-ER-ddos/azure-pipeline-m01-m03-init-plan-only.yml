@@ -37,13 +37,10 @@ steps:
 #   displayName: 'terraform plan'
 
 - script: |
-    cd 'C:\agent\_work\8\s\M01-VDES-03-ER-ddos'
+    workingDirectory: 'C:\agent\_work\8\s\M01-VDES-03-ER-ddos'
     terraform init 2>&1
-  displayName: 'TF init'
-
-- script: |
-    terraform plan -out=tfplan -input=false 2>&1
-  displayName: 'TF plan'
+    terraform plan
+  displayName: 'TF init and plan'
 
 
 
