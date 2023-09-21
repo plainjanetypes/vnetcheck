@@ -6,14 +6,14 @@
 trigger: none
 pool: mylapu
 
-# resources:
-#  repositories:
-#     - repository: vnetcheck
-#       type: github
-#       endpoint: pj-hub
-#       name: plainjanetypes/vnetcheck
-#       path: M01-VDES-03-ER-ddos
-#       ref: main
+resources:
+ repositories:
+    - repository: vnetcheck
+      type: github
+      endpoint: pj-hub
+      name: plainjanetypes/vnetcheck
+      path: M01-VDES-03-ER-ddos
+      ref: main
 
 
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
