@@ -6,14 +6,14 @@
 trigger: none
 pool: mylapu
 
-resources:
- repositories:
-    - repository: vnetcheck
-      type: github
-      endpoint: pj-hub
-      name: plainjanetypes/vnetcheck
-      path: M01-VDES-03-ER-ddos
-      ref: main
+# resources:
+#  repositories:
+#     - repository: vnetcheck
+#       type: github
+#       endpoint: pj-hub
+#       name: plainjanetypes/vnetcheck
+#       path: M01-VDES-03-ER-ddos
+#       ref: main
 
 
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
@@ -29,12 +29,23 @@ steps:
 #       echo "Local path of Git repository: $(Build.Repository.LocalPath)"
 #   displayName: 'Print Git Repository Local Path'
 
+# - script: |
+#    echo "current working directory : $(System.DefaultWorkingDirectory)"
+#    cd $(System.DefaultWorkingDirectory)/vnetcheck/M01-VDES-03-ER-ddos
+#    terraform init
+#    terraform plan
+#   displayName: 'terraform plan'
+
 - script: |
-   echo "current working directory : $(System.DefaultWorkingDirectory)"
-   cd $(System.DefaultWorkingDirectory)/vnetcheck/M01-VDES-03-ER-ddos
-   terraform init
-   terraform plan
-  displayName: 'terraform plan'
+    cd $(Build.SourcesDirectory)/
+    terraform init 2>&1
+  displayName: 'TF init'
+
+- script: |
+    terraform plan -out=tfplan -input=false 2>&1
+  displayName: 'TF plan'
+
+
 
 
 
