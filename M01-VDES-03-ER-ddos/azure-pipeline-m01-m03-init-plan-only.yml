@@ -13,13 +13,12 @@ resources:
       name: networksetup/M01-VDES-03-ER-ddos
       ref: refs/heads/main
 
-      
 
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
 #cd $(Build.SourcesDirectory)/networksetup/M01-VDES-03-ER-ddos and cd $(Build.SourcesDirectory) didnt work
 #- checkout: self
 steps:
-
+- checkout: self
 - script: |
     echo "current working directory : $(System.DefaultWorkingDirectory) and $(Build.SourcesDirectory)/subdirectory"
   displayName: 'working directory'
