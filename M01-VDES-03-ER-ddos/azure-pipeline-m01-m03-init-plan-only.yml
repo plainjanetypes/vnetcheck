@@ -23,6 +23,10 @@ steps:
   displayName: 'working directory'
 
 - script: |
+      echo "Local path of Git repository: $(Build.Repository.LocalPath)"
+  displayName: 'Print Git Repository Local Path'
+
+- script: |
    terraform init
    terraform plan
   displayName: 'terraform plan'
