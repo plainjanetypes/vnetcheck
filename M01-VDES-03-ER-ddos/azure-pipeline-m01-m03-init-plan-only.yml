@@ -12,7 +12,7 @@ resources:
       type: github
       endpoint: pj-hub
       name: plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
-      ref: refs/heads/main
+      ref: main
 
 
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
