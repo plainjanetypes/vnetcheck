@@ -9,9 +9,10 @@ pool: mylapu
 resources:
  repositories:
     - repository: vnetcheck
-      type: azureRepo
+      type: git
       name: networkingaz700/networksetup/vnetcheck/M01-VDES-03-ER-ddos
       ref: refs/heads/main
+
       
 
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
