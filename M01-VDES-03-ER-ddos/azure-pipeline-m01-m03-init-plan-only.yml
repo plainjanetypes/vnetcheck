@@ -6,12 +6,12 @@
 trigger: none
 pool: mylapu
 
-# resources:
-#  repositories:
-#     - repository: vnetcheck
-#       type: azureRepo
-#       name: networkingaz700/networksetup
-#       ref: refs/heads/M01-VDES-03-ER-ddos
+resources:
+ repositories:
+    - repository: vnetcheck
+      type: azureRepo
+      name: networkingaz700/networksetup/vnetcheck/M01-VDES-03-ER-ddos
+      ref: refs/heads/main
       
 
 #/plainjanetypes/vnetcheck/M01-VDES-03-ER-ddos
