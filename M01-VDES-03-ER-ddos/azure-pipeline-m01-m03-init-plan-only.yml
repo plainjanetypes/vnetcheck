@@ -9,7 +9,7 @@ pool: mylapu
 steps:
 - script: |
     
-    terraform init 2>&1
+    terraform init 2>&1 -reconfigure
   displayName: 'TF init'
   workingDirectory: 'C:\agent\_work\8\s\M01-VDES-03-ER-ddos'
 
