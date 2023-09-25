@@ -8,9 +8,9 @@ pool: mylapu
 
 steps:
  
-- script: |
-    az login --service-principal -u 3ba70a91-655a-47f0-9d7c-8e43cc22de6e -p vq58Q~FHbtyYJwkFpMNvhHWbkLI-..4u5SJSKcVK --tenant d05a216e-6e0c-4e0f-9e71-5507bb668139
-  displayName: 'Az Login'
+# - script: |
+#     az login --service-principal -u 3ba70a91-655a-47f0-9d7c-8e43cc22de6e -p vq58Q~FHbtyYJwkFpMNvhHWbkLI-..4u5SJSKcVK --tenant d05a216e-6e0c-4e0f-9e71-5507bb668139
+#   displayName: 'Az Login'
 
 - script: |
     
