@@ -24,9 +24,13 @@ terraform {
 provider "azurerm" {
   #version = ">=2.0.0"
   features {}
+
+  client_id = 
+  client_secret = 
+  tenant_id = 
+  subscription_id = 
 }
 #adding provider for external powershell source from https://registry.terraform.io/providers/hashicorp/external/latest
-
 provider "external" {
     #no version limit
 }
