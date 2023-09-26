@@ -25,10 +25,10 @@ provider "azurerm" {
   #version = ">=2.0.0"
   features {}
 
-  client_id = 
-  client_secret = 
-  tenant_id = 
-  subscription_id = 
+  # client_id = data.azurerm_key_vault_secret.genkvsecret-700-deployer-client-id
+  # client_secret = data.azurerm_key_vault_secret.genkvsecret-700-deployer-kv-secret
+  # tenant_id = data.azurerm_key_vault_secret.genkvsecret-700-deployer-tenant-id
+  # subscription_id = data.azurerm_key_vault_secret.genkvsecret-700-deployer-kv-sub-id
 }
 #adding provider for external powershell source from https://registry.terraform.io/providers/hashicorp/external/latest
 provider "external" {
