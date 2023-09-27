@@ -1,16 +1,17 @@
 # for M04-LBTM
 
-trigger:
- branches:
-   include:
-     - main
+#set trigger to none/manual
+trigger: none
+#  branches:
+#    include:
+#      - main
 
 pool: mylapu
 
 steps:
 - script: |
     echo 'terraform init'
-    terraform init
+    terraform init 2>&1
   displayName: 'terraform init'
   workingDirectory: 'C:\agent\_work\1\s'
 
