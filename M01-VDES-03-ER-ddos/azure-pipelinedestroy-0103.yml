@@ -1,0 +1,16 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool: mylapu
+
+steps:
+- script: |
+    echo 'terraform destroy'
+    terraform destroy -input=false -auto-approve
+  displayName: 'terraform destroy'
+  workingDirectory: 'C:\agent\_work\2\s\M01-VDES-03-ER-ddos'
+
