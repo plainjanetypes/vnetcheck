@@ -13,17 +13,17 @@ steps:
     echo 'terraform init'
     terraform init -backend-config="backend.tf"
   displayName: 'terraform init'
-  workingDirectory: 'C:\agent\_work\1\s'
+  workingDirectory: 'C:\agent\_work\2\s\M01-VDES-03-ER-ddos'
 
 - script: |
     echo 'publish terraform plan'
     terraform plan
   displayName: 'terraform plan'
-  workingDirectory: 'C:\agent\_work\1\s'
+  workingDirectory: 'C:\agent\_work\2\s\M01-VDES-03-ER-ddos'
 
 - script: |
     echo 'terraform apply'
     terraform apply -input=false -auto-approve
   displayName: 'terraform apply'
-  workingDirectory: 'C:\agent\_work\1\s'
+  workingDirectory: 'C:\agent\_work\2\s\M01-VDES-03-ER-ddos'
 
