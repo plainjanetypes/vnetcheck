@@ -16,13 +16,13 @@ steps:
     
     terraform init 2>&1 -reconfigure
   displayName: 'TF init'
-  workingDirectory: 'C:\agent\_work\8\s\M01-VDES-03-ER-ddos'
+  workingDirectory: 'C:\agent\_work\2\s\M01-VDES-03-ER-ddos'
 
 - script: |
 
     terraform plan
   displayName: 'TF plan'
-  workingDirectory: 'C:\agent\_work\8\s\M01-VDES-03-ER-ddos'
+  workingDirectory: 'C:\agent\_work\2\s\M01-VDES-03-ER-ddos'
 
 # resources:
 #  repositories:
