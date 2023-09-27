@@ -12,5 +12,5 @@ steps:
     echo 'terraform destroy'
     terraform destroy -input=false -auto-approve
   displayName: 'terraform destroy'
-  workingDirectory: 'C:\agent\_work\1\s'
+  workingDirectory: 'C:\agent\_work\2\s\M01-VDES-03-ER-ddos'
 
