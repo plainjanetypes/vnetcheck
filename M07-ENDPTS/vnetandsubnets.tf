@@ -17,11 +17,14 @@ resource "azurerm_subnet" "publiccussubnet" {
     name = "Public"
     address_prefixes = ["10.0.0.0/24"]
     virtual_network_name = azurerm_virtual_network.cusvnet.name
+    resource_group_name = azurerm_resource_group.resgrp.name
 }
 #create a subnet - private (with service endpoint - storage)
 resource "azurerm_subnet" "pvtcussubnet" {
     name = "Private"
     address_prefixes = ["10.0.1.0/24"]
     virtual_network_name = azurerm_virtual_network.cusvnet.name
+    resource_group_name = azurerm_resource_group.resgrp.name
     service_endpoints = ["Microsoft.Storage"]
+
 }
