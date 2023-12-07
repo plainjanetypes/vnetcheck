@@ -19,3 +19,4 @@ Module 06 - Design and implement network security	M06 - Unit 9 Secure your virtu
 Module 07 - Design and implement private access to Azure Services	M07 - Unit 5 Restrict network access to PaaS resources with virtual network service endpoints
 Module 07 - Design and implement private access to Azure Services	M07 - Unit 6 Create an Azure private endpoint using Azure PowerShell
 Module 08 - Design and implement network monitoring	M08 - Unit 3 Monitor a load balancer resource using Azure Monitor
+
